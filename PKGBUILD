@@ -3,7 +3,7 @@
 pkgname=hostapd-rtl871xdrv
 _pkgname=${pkgname%-*}
 pkgver=2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://w1.fi/hostapd/"
@@ -18,18 +18,18 @@ source=(http://w1.fi/releases/${_pkgname}-${pkgver}.tar.gz
 	git://github.com/pritambaral/hostapd-rtl871xdrv.git
 	config
 	hostapd.service
-	hostapd-2.3-noscan.patch
+	hostapd-2.5-noscan.patch
 	openvswitch.patch)
 md5sums=('69f9cec3f76d74f402864a43e4f8624f'
          'SKIP'
          '43c0ec1d8b4d4e46f468bc161bb05c4b'
          '380042b9cf4950e34ed34b3093ab9e7f'
-         'eaf8e48a9a63b5902fddadff2b8933fa'
+         'b0a235a71ac11a504ff51b68622faf38'
          'a0802a604ed957078da0e14863df74f0')
 
 prepare() {
   cd ${_pkgname}-$pkgver
-  patch -p1 -i $srcdir/hostapd-2.3-noscan.patch
+  patch -p1 -i $srcdir/hostapd-2.5-noscan.patch
   patch -p1 -i $srcdir/openvswitch.patch
 
   # Realtek patch
